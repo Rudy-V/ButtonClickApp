@@ -18,15 +18,17 @@ public class MainActivity extends AppCompatActivity {
         EditText userInput = (EditText) findViewById(R.id.editTextTextPersonName);
         Button button = (Button) findViewById(R.id.button);
         TextView textView = (TextView) findViewById(R.id.textView);
+
+        userInput.setText("");
         textView.setText("");
         textView.setMovementMethod(new ScrollingMovementMethod());
-        View.OnClickListener ourOnClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String result = userInput.getText().toString();
+
+        View.OnClickListener ourOnClickListener = view -> {
+            String result = userInput.getText().toString();
+            if (!result.equals("")){
                 result = result + "\n";
                 textView.append(result);
-
+                userInput.setText("");
             }
         };
 
